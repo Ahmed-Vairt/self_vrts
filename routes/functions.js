@@ -3,6 +3,8 @@ var express = require('express');
 var router = express.Router();
 var http = require("http");
 
+var wallet = require('ethereumjs-wallet');
+
 bodyParser = require('body-parser').json();
 
 
@@ -376,7 +378,7 @@ var abi = web3.eth.contract([
     }
 ]);
 
-var fn = abi.at('0x5915e5d81f2d467325aa2cb48152c115188730cb');
+var fn = abi.at('0x00f204d7eddd67b5aadaa1595f82b2f3778bd91c');
 // console.log(fn);
 
 
@@ -396,6 +398,29 @@ router.get('/getOwner', bodyParser, function (req, res) {
     console.log("Checking Owner Address");
 });
 
+// CREATE ETHEREUM WALLET
+// INPUT : PASSPHRASE
+// OUTPUT : WALLET INFO JSON
+router.get('/create/wallet/:passphrase', async function (req, res) {
+    if (req.params.passphrase !== '') {
+        let walletObj = await wallet.generate(req.params.passphrase);
+        if (walletObj.getAddressString() == '') {
+            res.send({ sucess: false, message: 'Unable to create wallet' });
+        } else {
+            let responseObj = {
+                success: true,
+                message: "Wallet created successfully!",
+                WalletAddress: walletObj.getAddressString(),
+                privateKey: walletObj.getPrivateKeyString(),
+                keyValueJson: walletObj.toV3(req.params.passphrase)
+            }
+            res.send(responseObj);
+            console.log("Wallet has been created Successfully......" + walletObj.getAddressString());
+        }
+    } else {
+        res.send({ sucess: false, message: 'Please provide passphrase to create wallet' });
+    }
+});
 
 
 //Getting Balance in Vested and Non Vested VRTs
