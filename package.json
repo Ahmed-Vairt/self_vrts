@@ -1,0 +1,32 @@
+{
+  "name": "vrttoken",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "lite-server"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "debug": "~2.6.9",
+    "ejs": "^2.6.1",
+    "ethereumjs-wallet": "^0.6.1",
+    "express": "^4.16.3",
+    "http-errors": "~1.6.2",
+    "json-stringify-safe": "^5.0.1",
+    "morgan": "~1.9.0",
+    "multer": "^1.3.1",
+    "promise-nodeify": "^3.0.0",
+    "pug": "2.0.0-beta11",
+    "web3": "github:ethereum/web3.js"
+  },
+  "main": "app.js",
+  "devDependencies": {
+    "lite-server": "^2.4.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
