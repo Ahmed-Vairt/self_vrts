@@ -1,0 +1,32 @@
+=========================================================================
+=========================================================================
+=============================API's & PAYLOAD's===========================
+=========================================================================
+=========================================================================
+
+-------------------------------------------------------------------------
+//to get address of owner account
+//return you address of owner
+....................localhost:3000/function/getOwner
+-------------------------------------------------------------------------
+
+-------------------------------------------------------------------------
+//to create new wallet
+//return you wallet adress etc
+.............localhost:3000/function/create/wallet/:passphrase
+-------------------------------------------------------------------------
+
+-------------------------------------------------------------------------
+//to check the balance of account
+//input: address (address), tokenId (uint)
+//output: return token balance of that account
+.............localhost:3000/function/getBalance/:adress/:tokenId
+-------------------------------------------------------------------------
+
+-------------------------------------------------------------------------
+//to transfer some amount
+//input: recipient address (address), amount (uint), tokenId (uint)
+//output: return transfer receipt address
+//note:only vested vrts ('1') transaction is allowed, otherwise get error
+.......localhost:3000/function/transfer/:toAdress/:amount/:tokenId
+-------------------------------------------------------------------------
