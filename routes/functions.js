@@ -454,7 +454,7 @@ router.get('/transfer/:toAdress/:amount/:tokenId', bodyParser, function (req, re
             message: "Only VESTED VRT's can be transfer"
         };
         res.status(200).send(data);
-        console.log("Transaction not allowed");
+        console.log("Transaction is not allowed");
     }
 });
 
